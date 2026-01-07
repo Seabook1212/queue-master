@@ -1,23 +1,16 @@
 package works.weave.socks.queuemaster.controllers;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.junit4.SpringRunner;
 import works.weave.socks.queuemaster.entities.HealthCheck;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.*;
-
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.List;
+import java.util.Map;
 
-@RunWith(SpringRunner.class)
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.*;
+
 @SpringBootTest
 public class ITHealthCheckController {
 

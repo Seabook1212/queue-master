@@ -10,12 +10,12 @@ import com.openpojo.validation.affirm.Affirm;
 import com.openpojo.validation.rule.impl.*;
 import com.openpojo.validation.test.impl.GetterTester;
 import com.openpojo.validation.test.impl.SetterTester;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.assertThat;
 
 public class UnitPojo {
     // Configured for expectation, so we know when a class gets added or removed.
