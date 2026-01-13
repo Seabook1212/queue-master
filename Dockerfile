@@ -1,14 +1,12 @@
 # Multi-stage build for Spring Boot 3.x with Java 17
-# Stage 1: Build with Maven
-FROM eclipse-temurin:17-jdk AS builder
-WORKDIR /build
-COPY pom.xml .
-COPY src ./src
-RUN apt-get update && apt-get install -y maven && \
-    mvn clean package -DskipTests && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+# FROM eclipse-temurin:17-jdk AS builder
+# WORKDIR /build
+# COPY pom.xml .
+# COPY src ./src
+# RUN apt-get update && apt-get install -y maven && \
+#     mvn clean package -DskipTests && \
+#     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Stage 2: Runtime
 FROM eclipse-temurin:17-jre
 
 ENV	SERVICE_USER=myuser \
@@ -25,7 +23,8 @@ RUN	groupadd -g ${SERVICE_GID} ${SERVICE_GROUP} && \
 	rm -rf /var/lib/apt/lists/*
 
 WORKDIR /usr/src/app
-COPY --from=builder /build/target/*.jar ./app.jar
+# COPY --from=builder /build/target/*.jar ./app.jar
+COPY ./target/*.jar ./app.jar
 
 RUN	chown -R ${SERVICE_USER}:${SERVICE_GROUP} ./app.jar
 
