@@ -82,6 +82,11 @@
             <groupId>jakarta.annotation</groupId>
             <artifactId>jakarta.annotation-api</artifactId>
         </dependency>
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>chaos-monkey-spring-boot</artifactId>
+            <version>3.1.0</version>
+        </dependency>
     </dependencies>
     <build>
         <finalName>queue-master</finalName>
