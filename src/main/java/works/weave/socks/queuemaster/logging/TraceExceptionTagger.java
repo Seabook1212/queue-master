@@ -2,19 +2,25 @@ package works.weave.socks.queuemaster.logging;
 
 import io.micrometer.tracing.Span;
 import io.micrometer.tracing.Tracer;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.stereotype.Component;
 
 @Component
 public class TraceExceptionTagger {
 
-    private final Tracer tracer;
+    private final ObjectProvider<Tracer> tracerProvider;
 
-    public TraceExceptionTagger(Tracer tracer) {
-        this.tracer = tracer;
+    public TraceExceptionTagger(ObjectProvider<Tracer> tracerProvider) {
+        this.tracerProvider = tracerProvider;
     }
 
     public void tagException(Throwable throwable) {
         if (throwable == null) {
+            return;
+        }
+
+        Tracer tracer = tracerProvider.getIfAvailable();
+        if (tracer == null) {
             return;
         }
 
